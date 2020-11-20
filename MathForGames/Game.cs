@@ -115,6 +115,13 @@ namespace MathForGames
 
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
+
+            //Sets the starting scene index and adds the scenes to the scenes array
+            int startingSceneIndex = 0;
+            startingSceneIndex = AddScene(scene1);
+
+            //Sets the current scene to be the starting scene index
+            SetCurrentScene(startingSceneIndex);
         }
 
 

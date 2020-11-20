@@ -14,6 +14,7 @@ namespace MathForGames
         protected Matrix3 _globalTransform = new Matrix3();
         protected Matrix3 _localTransform = new Matrix3();
         private Matrix3 _translation = new Matrix3();
+        private Matrix3 _rotation = new Matrix3();
         private Matrix3 _scale = new Matrix3();
         protected Actor _parent;
         protected Actor[] _children = new Actor[0];
@@ -60,6 +61,8 @@ namespace MathForGames
             set { _maxSpeed = value; }
         }
 
+
+
         public Actor(float x, float y)
         {
             _localTransform = new Matrix3();
@@ -67,6 +70,7 @@ namespace MathForGames
             LocalPosition = new Vector2(x, y);
             _velocity = new Vector2();
         }
+
 
 
         public void AddChild(Actor child)
@@ -116,6 +120,17 @@ namespace MathForGames
             _translation = Matrix3.CreateTranslation(position);
         }
 
+        public void SetRotation(float radians)
+        {
+            _rotation = Matrix3.CreateRotation(radians);
+        }
+
+        public void Rotate(float radians)
+        {
+            _rotation *= Matrix3.CreateRotation(radians);
+
+        }
+
         public void SetScale(float x, float y)
         {
             _scale = Matrix3.CreateScale(new Vector2(x, y));
@@ -123,7 +138,7 @@ namespace MathForGames
 
         private void UpdateTransform()
         {
-            _localTransform = _translation * _scale;
+            _localTransform = _translation * _rotation * _scale;
 
             if (_parent != null)
                 _globalTransform = _parent._globalTransform * _localTransform;
