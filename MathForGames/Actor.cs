@@ -61,8 +61,7 @@ namespace MathForGames
             set { _maxSpeed = value; }
         }
 
-
-
+        //Actor Constructor
         public Actor(float x, float y)
         {
             _localTransform = new Matrix3();
@@ -70,8 +69,6 @@ namespace MathForGames
             LocalPosition = new Vector2(x, y);
             _velocity = new Vector2();
         }
-
-
 
         public void AddChild(Actor child)
         {
@@ -167,7 +164,7 @@ namespace MathForGames
         public virtual void Draw()
         {
             //Only draws the actor on the console if it is within the bounds of the window
-            if (WorldPosition.X >= 0 && WorldPosition.X < Console.WindowWidth
+            if (WorldPosition.X >= 0 && WorldPosition.X < 300
                 && WorldPosition.Y >= 0 && WorldPosition.Y < Console.WindowHeight)
             {
                 Console.SetCursorPosition((int)WorldPosition.X, (int)WorldPosition.Y);

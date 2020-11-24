@@ -96,6 +96,16 @@ namespace MathForGames
             _currentSceneIndex = index;
         }
 
+        public static bool GetKeyDown(int key)
+        {
+            return Raylib.IsKeyDown((KeyboardKey)key);
+        }
+
+        public static bool GetKeyPressed(int key)
+        {
+            return Raylib.IsKeyPressed((KeyboardKey)key);
+        }
+
         public Game()
         {
             _scenes = new Scene[0];
@@ -115,6 +125,10 @@ namespace MathForGames
 
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
+
+            //Creates actors to be added and adds them to scene
+            Player player = new Player(0, 1);
+            scene1.AddActor(player);
 
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;
