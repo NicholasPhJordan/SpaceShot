@@ -127,7 +127,13 @@ namespace MathForGames
             Scene scene1 = new Scene();
 
             //Creates actors to be added and adds them to scene
-            Player player = new Player(0, 1);
+            Background background1 = new Background(16, 10);
+            background1.SetScale(32, 32);
+            scene1.AddActor(background1);
+
+            Player player = new Player(1.5f, 10.5f);
+            player.Rotate(-1.6f);
+            player.SetScale(2, 2);
             scene1.AddActor(player);
 
             //Sets the starting scene index and adds the scenes to the scenes array

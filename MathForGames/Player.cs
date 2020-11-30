@@ -8,7 +8,7 @@ namespace MathForGames
 {
     class Player : Actor
     {
-        private float _speed = 1;
+        private float _speed = 3;
         private static Sprite _sprite;
 
         public float Speed
@@ -38,6 +38,7 @@ namespace MathForGames
                 + Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_S));
 
             Acceleration = new Vector2(xDirection, yDirection);
+            Velocity = Velocity.Normalized * Speed;
 
             base.Update(deltaTime);
         }
