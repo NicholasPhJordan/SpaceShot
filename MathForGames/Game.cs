@@ -107,11 +107,13 @@ namespace MathForGames
             return Raylib.IsKeyPressed((KeyboardKey)key);
         }
 
+        //initializes game array
         public Game()
         {
             _scenes = new Scene[0];
         }
 
+        // function that allows me to make ints with a rnadom number range 
         public static Random rnd = new Random();
         int X = rnd.Next(25, 51);  // creates a number between 25 and 50
         int Y = rnd.Next(1, 21);  //random number between 1 and 20 
