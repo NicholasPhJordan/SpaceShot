@@ -17,6 +17,9 @@
     <None Update="Backgrounds\black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="PNG\Enemies\enemyBlack3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="PNG\playerShip1_red.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

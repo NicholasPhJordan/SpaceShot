@@ -20,6 +20,7 @@ namespace MathForGames
             _gameOver = value;
         }
 
+        
         public static int CurrentSceneIndex
         {
             get
@@ -126,19 +127,20 @@ namespace MathForGames
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
 
-            //Creates actors to be added and adds them to scene
-            Background background1 = new Background(16, 10);
-            background1.SetScale(32, 32);
-            scene1.AddActor(background1);
-
             Player player = new Player(1.5f, 10.5f);
             player.Rotate(-1.6f);
             player.SetScale(2, 2);
             scene1.AddActor(player);
 
+            Enemy enemy = new Enemy(50, 10);
+            scene1.AddActor(enemy);
+
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;
             startingSceneIndex = AddScene(scene1);
+            enemy.Rotate(-1.6f);
+            enemy.SetScale(2, 2);
+            enemy.Velocity.X = -3.0f;
 
             //Sets the current scene to be the starting scene index
             SetCurrentScene(startingSceneIndex);

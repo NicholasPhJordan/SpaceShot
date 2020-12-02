@@ -8,7 +8,7 @@ namespace MathForGames
 {
     class Player : Actor
     {
-        private float _speed = 3;
+        private float _speed = 4;
         private static Sprite _sprite;
 
         public float Speed

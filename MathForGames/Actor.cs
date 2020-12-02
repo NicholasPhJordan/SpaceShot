@@ -151,7 +151,7 @@ namespace MathForGames
             if (Velocity.Magnitude > MaxSpeed)
                 Velocity = Velocity.Normalized * MaxSpeed;
 
-            //UpdateFacing();
+            //Increase position by the current velocity
             LocalPosition += _velocity * deltaTime;
         }
 
