@@ -112,6 +112,9 @@ namespace MathForGames
             _scenes = new Scene[0];
         }
 
+        public static Random rnd = new Random();
+        int X = rnd.Next(25, 51);  // creates a number between 25 and 50
+        int Y = rnd.Next(1, 21);  //random number between 1 and 20 
 
         //Called when the game begins. Use this for initialization.
         public void Start()
@@ -132,7 +135,7 @@ namespace MathForGames
             player.SetScale(2, 2);
             scene1.AddActor(player);
 
-            Enemy enemy = new Enemy(50, 10);
+            Enemy enemy = new Enemy(X, Y);
             scene1.AddActor(enemy);
 
             //Sets the starting scene index and adds the scenes to the scenes array
