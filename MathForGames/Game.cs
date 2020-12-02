@@ -132,25 +132,39 @@ namespace MathForGames
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
 
+            Enemy enemy = new Enemy(X, Y);
+            enemy.Rotate(-1.6f);
+            enemy.SetScale(2, 2);
+            enemy.Velocity.X = -3.0f;
+            scene1.AddActor(enemy);
+
+            //int i = 0;
+            //while (i < 6)
+            //{
+            //    Enemy i = new Enemy(X, Y);
+            //    scene1.AddActor(i);
+            //    i.Rotate(-1.6f);
+            //    i.SetScale(2, 2);
+            //    i.Velocity.X = -3.0f;
+            //    i++;
+            //}
+
             Player player = new Player(1.5f, 10.5f);
-            player.Rotate(-1.6f);
+            player.Rotate(-1.58f);
             player.SetScale(2, 2);
             scene1.AddActor(player);
 
-            Enemy enemy = new Enemy(X, Y);
-            scene1.AddActor(enemy);
+            //checks for collision between actors
+            enemy.CheckCollision(player);
+            player.CheckCollision(enemy);
 
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;
             startingSceneIndex = AddScene(scene1);
-            enemy.Rotate(-1.6f);
-            enemy.SetScale(2, 2);
-            enemy.Velocity.X = -3.0f;
 
             //Sets the current scene to be the starting scene index
             SetCurrentScene(startingSceneIndex);
         }
-
 
         //Called every frame.
         public void Update(float deltaTime)
@@ -179,6 +193,8 @@ namespace MathForGames
         {
             if (_scenes[_currentSceneIndex].Started)
                 _scenes[_currentSceneIndex].End();
+
+            Raylib.DrawText("Press Esc to quit", 100, 100, 100, Color.BLUE);
         }
 
 

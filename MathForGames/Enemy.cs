@@ -14,6 +14,18 @@ namespace MathForGames
             : base(x, y)
         {
             _sprite = new Sprite("PNG/Enemies/enemyBlack3.png");
+            _collisionRadius = 20;
+        }
+
+        public override void OnCollision(Actor other)
+        {
+            base.OnCollision(other);
+
+            if (other is Player)
+            {
+                Raylib.DrawText("You Died\nPress Esc to quit", 100, 100, 100, Color.BLUE);
+                Game.SetGameOver(true);
+            }
         }
 
         public override void Update(float deltaTime)

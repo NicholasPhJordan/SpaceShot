@@ -10,6 +10,7 @@ namespace MathForGames
     {
         private float _speed = 4;
         private static Sprite _sprite;
+        private bool _canMove = true;
 
         public float Speed
         {
@@ -27,21 +28,40 @@ namespace MathForGames
             : base(x, y)
         {
             _sprite = new Sprite("PNG/playerShip1_red.png");
+            _collisionRadius = 20;
+        }
+
+        // Disable all player controls including movement and shooting.
+        public void DisableControls()
+        {
+            _canMove = false;
+        }
+
+        public override void OnCollision(Actor other)
+        {
+            base.OnCollision(other);
+
+            if (other is Enemy)
+            {
+                Raylib.DrawText("You Died\nPress Esc to quit", 100, 100, 100, Color.BLUE);
+                Game.SetGameOver(true);
+            }
         }
 
         public override void Update(float deltaTime)
         {
-            int xDirection = -Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_A))
-                + Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_D));
+            //If the player can't move, don't ask for input.
+            if (!_canMove)
+                return;
 
+            int xDirection = -Convert.ToInt32(null);
             int yDirection = -Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_W))
                 + Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_S));
-
-            int i = Math.Clamp(xDirection, 1, 3);
 
             //Set the actors current velocity to be the a vector with the direction found scaled by the speed
             Acceleration = new Vector2(xDirection, yDirection);
             Velocity = Velocity.Normalized * Speed;
+
             base.Update(deltaTime);
         }
 

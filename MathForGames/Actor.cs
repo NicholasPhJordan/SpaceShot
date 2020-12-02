@@ -18,6 +18,7 @@ namespace MathForGames
         private Matrix3 _scale = new Matrix3();
         protected Actor _parent;
         protected Actor[] _children = new Actor[0];
+        protected float _collisionRadius;
         private float _maxSpeed = 5;
 
         public bool Started { get; private set; }
@@ -127,6 +128,23 @@ namespace MathForGames
             _scale = Matrix3.CreateScale(new Vector2(x, y));
         }
 
+        /// Checks to see if this actor overlaps another.
+        /// <param name="other">The actor that this actor is checking collision against</param>
+        /// <returns></returns>
+        public bool CheckCollision(Actor other)
+        {
+            float distance = (other.WorldPosition - WorldPosition).Magnitude;
+            return distance <= other._collisionRadius + _collisionRadius;
+        }
+
+        /// Called whenever a collision occurs between this actor and another.
+        /// Use this to define game logic for this actors collision.
+        /// <param name="other"></param>
+        public virtual void OnCollision(Actor other)
+        {
+
+        }
+
         private void UpdateTransform()
         {
             _localTransform = _translation * _rotation * _scale;
@@ -158,7 +176,7 @@ namespace MathForGames
         public virtual void Draw()
         {
             //Only draws the actor on the console if it is within the bounds of the window
-            if (WorldPosition.X >= 0 && WorldPosition.X < 300
+            if (WorldPosition.X >= 0 && WorldPosition.X < Console.WindowWidth
                 && WorldPosition.Y >= 0 && WorldPosition.Y < Console.WindowHeight)
             {
                 Console.SetCursorPosition((int)WorldPosition.X, (int)WorldPosition.Y);
