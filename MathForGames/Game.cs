@@ -20,7 +20,7 @@ namespace MathForGames
             _gameOver = value;
         }
 
-        
+        // Returns the scene that is at the index of the current scene index
         public static int CurrentSceneIndex
         {
             get
@@ -29,6 +29,7 @@ namespace MathForGames
             }
         }
 
+        // Returns the scene at the index given and an empty scene if the index is out of bounds
         public static Scene GetScene(int index)
         {
             return _scenes[index];
@@ -39,6 +40,7 @@ namespace MathForGames
             return _scenes[_currentSceneIndex];
         }
 
+        // Adds the given scene to the array of scenes
         public static int AddScene(Scene scene)
         {
             Scene[] tempArray = new Scene[_scenes.Length + 1];
@@ -55,6 +57,7 @@ namespace MathForGames
             return index;
         }
 
+        // Finds the instance of the scene given that inside of the array and removes it
         public static bool RemoveScene(Scene scene)
         {
             if (scene == null)
@@ -86,6 +89,7 @@ namespace MathForGames
             return sceneRemoved;
         }
 
+        // Sets the current scene in the game to be the scene at the given index
         public static void SetCurrentScene(int index)
         {
             if (index < 0 || index >= _scenes.Length)
@@ -97,11 +101,13 @@ namespace MathForGames
             _currentSceneIndex = index;
         }
 
+        // Returns true while a key is being pressed
         public static bool GetKeyDown(int key)
         {
             return Raylib.IsKeyDown((KeyboardKey)key);
         }
 
+        // Returns true while if key was pressed once
         public static bool GetKeyPressed(int key)
         {
             return Raylib.IsKeyPressed((KeyboardKey)key);
@@ -115,14 +121,14 @@ namespace MathForGames
 
         // function that allows me to make ints with a rnadom number range 
         public static Random rnd = new Random();
-        int X = rnd.Next(25, 51);  // creates a number between 25 and 50
-        int Y = rnd.Next(1, 21);  //random number between 1 and 20 
+        int X = rnd.Next(40, 51);  // creates a number between 40 and 50
+        int Y = rnd.Next(3, 23);  //random number between 3 and 22 
 
         //Called when the game begins. Use this for initialization.
         public void Start()
         {
             //Creates a new window for raylib
-            Raylib.InitWindow(1024, 760, "Space Shot");
+            Raylib.InitWindow(1280, 768, "Space Shot");
             Raylib.SetTargetFPS(60);
 
             //Set up console window
@@ -138,18 +144,7 @@ namespace MathForGames
             enemy.Velocity.X = -3.0f;
             scene1.AddActor(enemy);
 
-            //int i = 0;
-            //while (i < 6)
-            //{
-            //    Enemy i = new Enemy(X, Y);
-            //    scene1.AddActor(i);
-            //    i.Rotate(-1.6f);
-            //    i.SetScale(2, 2);
-            //    i.Velocity.X = -3.0f;
-            //    i++;
-            //}
-
-            Player player = new Player(1.5f, 10.5f);
+            Player player = new Player(2f, 10.5f);
             player.Rotate(-1.58f);
             player.SetScale(2, 2);
             scene1.AddActor(player);
@@ -184,6 +179,9 @@ namespace MathForGames
             Console.Clear();
             _scenes[_currentSceneIndex].Draw();
 
+            Raylib.DrawText("SPACE SHOT", 500, 10, 50, Color.VIOLET);
+            Raylib.DrawFPS(1, 1);
+
             Raylib.EndDrawing();
         }
 
@@ -193,8 +191,6 @@ namespace MathForGames
         {
             if (_scenes[_currentSceneIndex].Started)
                 _scenes[_currentSceneIndex].End();
-
-            Raylib.DrawText("Press Esc to quit", 100, 100, 100, Color.BLUE);
         }
 
 
