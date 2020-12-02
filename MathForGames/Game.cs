@@ -121,7 +121,7 @@ namespace MathForGames
 
         // function that allows me to make ints with a rnadom number range 
         public static Random rnd = new Random();
-        int X = rnd.Next(40, 51);  // creates a number between 40 and 50
+        int X = rnd.Next(0,30);  // creates a number between 40 and 50
         int Y = rnd.Next(3, 23);  //random number between 3 and 22 
 
         //Called when the game begins. Use this for initialization.
@@ -138,20 +138,25 @@ namespace MathForGames
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
 
-            Enemy enemy = new Enemy(X, Y);
-            enemy.Rotate(-1.6f);
-            enemy.SetScale(2, 2);
-            enemy.Velocity.X = -3.0f;
-            scene1.AddActor(enemy);
+            for (int i = 0; i <= 5; i++)
+            {
+                Enemy enemy = new Enemy(X, Y);
+                enemy.Rotate(-1.6f);
+                enemy.SetScale(2, 2);
+                enemy.Velocity.X = -3.0f;
+                scene1.AddActor(enemy);
+            }
+
+            //Enemy enemy = new Enemy(X, Y);
+            //enemy.Rotate(-1.6f);
+            //enemy.SetScale(2, 2);
+            //enemy.Velocity.X = -3.0f;
+            //scene1.AddActor(enemy);
 
             Player player = new Player(2f, 10.5f);
             player.Rotate(-1.58f);
             player.SetScale(2, 2);
             scene1.AddActor(player);
-
-            //checks for collision between actors
-            enemy.CheckCollision(player);
-            player.CheckCollision(enemy);
 
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;
@@ -179,7 +184,7 @@ namespace MathForGames
             Console.Clear();
             _scenes[_currentSceneIndex].Draw();
 
-            Raylib.DrawText("SPACE SHOT", 500, 10, 50, Color.VIOLET);
+            Raylib.DrawText("SPACE SHOT", 465, 10, 50, Color.VIOLET);
             Raylib.DrawFPS(1, 1);
 
             Raylib.EndDrawing();
