@@ -14,7 +14,10 @@ namespace MathForGames
             : base(x, y)
         {
             _sprite = new Sprite("PNG/Enemies/enemyBlack3.png");
-            _collisionRadius = 20;
+            Rotate(-1.6f);
+            SetScale(2, 2);
+            _velocity.X = -3;
+            _collisionRadius = 1;
         }
 
         public override void OnCollision(Actor other)

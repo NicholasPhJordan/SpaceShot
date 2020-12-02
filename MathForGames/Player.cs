@@ -28,7 +28,9 @@ namespace MathForGames
             : base(x, y)
         {
             _sprite = new Sprite("PNG/playerShip1_red.png");
-            _collisionRadius = 20;
+            Rotate(-1.58f);
+            SetScale(2, 2);
+            _collisionRadius = 1;
         }
 
         // Disable all player controls including movement and shooting.

@@ -121,7 +121,7 @@ namespace MathForGames
 
         // function that allows me to make ints with a rnadom number range 
         public static Random rnd = new Random();
-        int X = rnd.Next(0,30);  // creates a number between 40 and 50
+        int X = rnd.Next(40, 51);  // creates a number between 40 and 50
         int Y = rnd.Next(3, 23);  //random number between 3 and 22 
 
         //Called when the game begins. Use this for initialization.
@@ -140,22 +140,12 @@ namespace MathForGames
 
             for (int i = 0; i <= 5; i++)
             {
-                Enemy enemy = new Enemy(X, Y);
-                enemy.Rotate(-1.6f);
-                enemy.SetScale(2, 2);
-                enemy.Velocity.X = -3.0f;
-                scene1.AddActor(enemy);
+                int X = rnd.Next(40, 61);  // creates a number between 40 and 50
+                int Y = rnd.Next(3, 23);  //random number between 3 and 22 
+                scene1.AddActor(new Enemy(X, Y));
             }
 
-            //Enemy enemy = new Enemy(X, Y);
-            //enemy.Rotate(-1.6f);
-            //enemy.SetScale(2, 2);
-            //enemy.Velocity.X = -3.0f;
-            //scene1.AddActor(enemy);
-
             Player player = new Player(2f, 10.5f);
-            player.Rotate(-1.58f);
-            player.SetScale(2, 2);
             scene1.AddActor(player);
 
             //Sets the starting scene index and adds the scenes to the scenes array

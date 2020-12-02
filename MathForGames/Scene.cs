@@ -121,6 +121,22 @@ namespace MathForGames
 
                 _actors[i].Update(deltaTime);
             }
+
+            foreach (Actor actor in _actors)
+            {
+                foreach (Actor actor1 in _actors)
+                {
+                    if (actor == actor1)
+                    {
+                        continue;
+                    }
+                    if (actor.CheckCollision(actor1))
+                    {
+                        actor.LocalPosition = new Vector2(1000, 1000);
+                    }
+                }
+            }
+
         }
 
         public virtual void Draw()
