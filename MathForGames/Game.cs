@@ -155,6 +155,11 @@ namespace MathForGames
             Player player = new Player(2f, 10.5f);
             scene1.AddActor(player);
 
+            if (GetKeyDown((int)KeyboardKey.KEY_D) == true)
+            {
+                scene1.AddActor(new Bullet(player.LocalPosition.X + 1, player.LocalPosition.Y));
+            }
+
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;
             startingSceneIndex = AddScene(scene1);

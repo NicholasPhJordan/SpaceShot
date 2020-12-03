@@ -138,7 +138,6 @@ namespace MathForGames
                     }
                 }
             }
-
         }
 
         public virtual void Draw()
