@@ -20,6 +20,12 @@ namespace MathForGames
             _gameOver = value;
         }
 
+        private void DrawLooseText()
+        {
+            Raylib.DrawText("YOU DIED", 150, 250, 200, Color.RED);
+            Raylib.DrawText("Press ESC to quit", 500, 450, 25, Color.WHITE);
+        }
+
         // Returns the scene that is at the index of the current scene index
         public static int CurrentSceneIndex
         {
@@ -138,7 +144,8 @@ namespace MathForGames
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
 
-            for (int i = 0; i <= 5; i++)
+            //adds a number of enemies that spawn in random locations 
+            for (int i = 0; i < 5; i++)
             {
                 int X = rnd.Next(40, 61);  // creates a number between 40 and 50
                 int Y = rnd.Next(3, 23);  //random number between 3 and 22 
@@ -177,6 +184,9 @@ namespace MathForGames
             Raylib.DrawText("SPACE SHOT", 465, 10, 50, Color.VIOLET);
             Raylib.DrawFPS(1, 1);
 
+            if (_gameOver)
+                DrawLooseText();
+
             Raylib.EndDrawing();
         }
 
@@ -194,7 +204,7 @@ namespace MathForGames
         {
             Start();
 
-            while (!_gameOver && !Raylib.WindowShouldClose())
+            while (!Raylib.WindowShouldClose())
             {
                 float deltaTime = Raylib.GetFrameTime();
                 Update(deltaTime);

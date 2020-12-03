@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Raylib_cs;
-using MathLibrary;
 
 namespace MathForGames
 {
-    class Enemy : Actor
+    class Bullet : Actor
     {
-        private Sprite _sprite;
+        private static Sprite _sprite;
 
-        public Enemy(float x, float y)
+        //Bullet Constructor
+        public Bullet(float x, float y)
             : base(x, y)
         {
-            _sprite = new Sprite("PNG/Enemies/enemyBlack3.png");
-            Rotate(-1.6f);
-            SetScale(2, 2);
-            _velocity.X = -3;
-            _collisionRadius = 1;
+            _sprite = new Sprite("PNG/Lasers/laserBlue16.png");
+            _velocity.X = 6.0F;
         }
 
         public override void Update(float deltaTime)
@@ -26,6 +22,5 @@ namespace MathForGames
 
             _sprite.Draw(_globalTransform);
         }
-
     }
 }

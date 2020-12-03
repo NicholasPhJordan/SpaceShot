@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Transactions;
 using MathLibrary;
+using Raylib_cs;
 
 namespace MathForGames
 {
@@ -132,7 +133,8 @@ namespace MathForGames
                     }
                     if (actor.CheckCollision(actor1))
                     {
-                        actor.LocalPosition = new Vector2(1000, 1000);
+                        RemoveActor(actor1);
+                        Game.SetGameOver(true);
                     }
                 }
             }

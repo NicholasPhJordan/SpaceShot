@@ -39,17 +39,6 @@ namespace MathForGames
             _canMove = false;
         }
 
-        public override void OnCollision(Actor other)
-        {
-            base.OnCollision(other);
-
-            if (other is Enemy)
-            {
-                Raylib.DrawText("You Died\nPress Esc to quit", 100, 100, 100, Color.BLUE);
-                Game.SetGameOver(true);
-            }
-        }
-
         public override void Update(float deltaTime)
         {
             //If the player can't move, don't ask for input.
