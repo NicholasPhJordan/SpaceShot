@@ -17,8 +17,6 @@ W - Move player up
 
 S - Move player down
 
-Space - Shoot those baddies
-
 ESC - To quit game
 
 :smile:
