@@ -8,7 +8,7 @@ namespace MathForGames
 {
     class Enemy : Actor
     {
-        private Sprite _sprite;
+        private static Sprite _sprite;
 
         public Enemy(float x, float y)
             : base(x, y)

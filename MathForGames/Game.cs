@@ -11,6 +11,7 @@ namespace MathForGames
     class Game
     {
         private static bool _gameOver = false;
+        public static bool _isShooting = false;
         private static Scene[] _scenes;
         private static int _currentSceneIndex;
 
@@ -127,8 +128,8 @@ namespace MathForGames
 
         // function that allows me to make ints with a rnadom number range 
         public static Random rnd = new Random();
-        int X = rnd.Next(40, 51);  // creates a number between 40 and 50
-        int Y = rnd.Next(3, 23);  //random number between 3 and 22 
+        int Xr = rnd.Next(40, 51);  // creates a number between 40 and 50
+        int Yr = rnd.Next(3, 23);  //random number between 3 and 22 
 
         //Called when the game begins. Use this for initialization.
         public void Start()
@@ -144,21 +145,18 @@ namespace MathForGames
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
 
-            //adds a number of enemies that spawn in random locations 
+            //adds a number of enemies that spawn in random locations
             for (int i = 0; i < 5; i++)
             {
-                int X = rnd.Next(40, 61);  // creates a number between 40 and 50
-                int Y = rnd.Next(3, 23);  //random number between 3 and 22 
-                scene1.AddActor(new Enemy(X, Y));
+                int Xr = rnd.Next(40, 61);  // creates a number between 40 and 50
+                int Yr = rnd.Next(3, 23);  //random number between 3 and 22
+                scene1.AddActor(new Enemy(Xr, Yr));
             }
 
             Player player = new Player(2f, 10.5f);
             scene1.AddActor(player);
-
-            if (GetKeyDown((int)KeyboardKey.KEY_D) == true)
-            {
-                scene1.AddActor(new Bullet(player.LocalPosition.X + 1, player.LocalPosition.Y));
-            }
+           
+            scene1.AddActor(new Bullet(player.WorldPosition.X + 1, player.WorldPosition.Y));
 
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;

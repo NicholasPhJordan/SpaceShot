@@ -123,6 +123,9 @@ namespace MathForGames
                 _actors[i].Update(deltaTime);
             }
 
+            if (Game.GetKeyDown((int)KeyboardKey.KEY_SPACE))
+                Game._isShooting = true;
+
             foreach (Actor actor in _actors)
             {
                 foreach (Actor actor1 in _actors)
@@ -133,8 +136,11 @@ namespace MathForGames
                     }
                     if (actor.CheckCollision(actor1))
                     {
-                        RemoveActor(actor1);
-                        Game.SetGameOver(true);
+                        if (actor == _actors[5])
+                        {
+                            RemoveActor(actor);
+                            Game.SetGameOver(true);
+                        }
                     }
                 }
             }

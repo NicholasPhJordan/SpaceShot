@@ -34,7 +34,7 @@ namespace MathForGames
             set
             {
                 _translation.m13 = value.X;
-                _translation.m23 = value.Y;
+                _translation.m23 = value.Y; 
             }
         }
 
