@@ -5,7 +5,8 @@ You have two baby ships that follow you. Try to avoid Having your head ship hit 
 
 ## How to Play
 
-Click the link below to get to the releases of the game and download all the files of the the latest release. Make sure to extract the files and slect .... 
+Click the link below to get to the releases of the game and download all the files of the the latest release. Make sure to extract the files and slect the SpaceShot folder. Double click "MathForGames.exe" and you should be good to go!
+
 Then Play and have fun!
 
 https://github.com/NicholasPhJordan/SpaceShot/releases
