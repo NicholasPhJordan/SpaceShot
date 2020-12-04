@@ -23,6 +23,10 @@ ESC - To quit game
 
 :smile:
 
+Don't forget to leave a review!
+
+https://forms.gle/yNjakroTQT6ouXjm7
+
 # Other Information
 
 ## Game Art
