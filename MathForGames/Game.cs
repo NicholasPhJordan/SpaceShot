@@ -11,7 +11,6 @@ namespace MathForGames
     class Game
     {
         private static bool _gameOver = false;
-        public static bool _isShooting = false;
         private static Scene[] _scenes;
         private static int _currentSceneIndex;
 
@@ -145,8 +144,19 @@ namespace MathForGames
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
 
+            //adds player to scene
             Player player = new Player(2f, 10.5f);
             scene1.AddActor(player);
+
+            //adds babies to scene
+            Baby baby = new Baby(2, .25f);
+            baby.SetScale(.5f, .5f);
+            player.AddChild(baby);
+            scene1.AddActor(baby);
+            Baby baby1 = new Baby(-2, .25f);
+            baby1.SetScale(.5f, .5f);
+            player.AddChild(baby1);
+            scene1.AddActor(baby1);
 
             //adds a number of enemies that spawn in random locations
             for (int i = 0; i < 5; i++)
@@ -155,8 +165,6 @@ namespace MathForGames
                 int Yr = rnd.Next(3, 23);  //random number between 3 and 22
                 scene1.AddActor(new Enemy(Xr, Yr));
             }
-           
-            scene1.AddActor(new Bullet(player.WorldPosition.X + 1, player.WorldPosition.Y));
 
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;

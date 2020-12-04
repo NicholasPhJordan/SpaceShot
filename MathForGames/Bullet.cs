@@ -17,6 +17,7 @@ namespace MathForGames
             _sprite = new Sprite("PNG/Lasers/laserBlue16.png");
             Rotate(-1.6f);
             _velocity.X = 6.0F;
+            _collisionRadius = 1;
         }
 
         public override void Update(float deltaTime)
