@@ -1,8 +1,7 @@
 # Space Shot
 
 A simple space game. You play as the red space ship that can only move up and down as enemies spawn and move towards you. 
-Try to shoot all the enemies before they get to the other side. But be careful! If any of the enmies hit you, 
-It's GAME OVER!
+You have two baby ships that follow you. Try to avoid Having your head ship hit by enemies or it's Game Over! At the moment there is no way to win the game, only a way to loose. But stick around for further updates!
 
 ## How to Play
 
