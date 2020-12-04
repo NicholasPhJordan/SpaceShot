@@ -136,7 +136,7 @@ namespace MathForGames
                     }
                     if (actor.CheckCollision(actor1))
                     {
-                        if (actor == _actors[5])
+                        if (actor == _actors[0])
                         {
                             RemoveActor(actor);
                             Game.SetGameOver(true);

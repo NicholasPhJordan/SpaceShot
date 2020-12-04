@@ -145,6 +145,9 @@ namespace MathForGames
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
 
+            Player player = new Player(2f, 10.5f);
+            scene1.AddActor(player);
+
             //adds a number of enemies that spawn in random locations
             for (int i = 0; i < 5; i++)
             {
@@ -152,9 +155,6 @@ namespace MathForGames
                 int Yr = rnd.Next(3, 23);  //random number between 3 and 22
                 scene1.AddActor(new Enemy(Xr, Yr));
             }
-
-            Player player = new Player(2f, 10.5f);
-            scene1.AddActor(player);
            
             scene1.AddActor(new Bullet(player.WorldPosition.X + 1, player.WorldPosition.Y));
 
