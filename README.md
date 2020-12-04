@@ -1,6 +1,6 @@
 # Space Shot
 
-A simple sapce game. You play as the red space ship that can only move up and down as enemies spawn and move towards you. 
+A simple space game. You play as the red space ship that can only move up and down as enemies spawn and move towards you. 
 Try to shoot all the enemies before they get to the other side. But be careful! If any of the enmies hit you, 
 It's GAME OVER!
 
