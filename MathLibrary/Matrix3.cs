@@ -44,6 +44,32 @@ namespace MathLibrary
             );
         }
 
+        public static Matrix3 operator *(Matrix3 lhs, Matrix3 rhs)
+        {
+            return new Matrix3
+                (
+                    //Row 1, Column 1
+                    lhs.m11 * rhs.m11 + lhs.m12 * rhs.m21 + lhs.m13 * rhs.m31,
+                    //Row 1, Column 2
+                    lhs.m11 * rhs.m12 + lhs.m12 * rhs.m22 + lhs.m13 * rhs.m32,
+                    //Row 1, Column 3
+                    lhs.m11 * rhs.m13 + lhs.m12 * rhs.m23 + lhs.m13 * rhs.m33,
+
+                    //Row 2, Column 1
+                    lhs.m21 * rhs.m11 + lhs.m22 * rhs.m21 + lhs.m23 * rhs.m31,
+                    //Row 2, Column 2
+                    lhs.m21 * rhs.m12 + lhs.m22 * rhs.m22 + lhs.m23 * rhs.m32,
+                    //Row 2, Column 3
+                    lhs.m21 * rhs.m13 + lhs.m22 * rhs.m23 + lhs.m23 * rhs.m33,
+
+                    //Row 3, Column 1
+                    lhs.m31 * rhs.m11 + lhs.m32 * rhs.m21 + lhs.m33 * rhs.m31,
+                    //Row 3, Column 2
+                    lhs.m31 * rhs.m12 + lhs.m32 * rhs.m22 + lhs.m33 * rhs.m32,
+                    //Row 3, Column 3
+                    lhs.m31 * rhs.m13 + lhs.m32 * rhs.m23 + lhs.m33 * rhs.m33
+                );
+        }
 
         //Creates new matrix that hs been rotated by given radians
         //radians = the angle the new matrix will be rotated
@@ -76,30 +102,12 @@ namespace MathLibrary
                 );
         }
 
-        public static Matrix3 operator *(Matrix3 lhs, Matrix3 rhs)
+        public static Vector3 operator *(Matrix3 lhs, Vector3 rhs)
         {
-            return new Matrix3
-                (
-                    //Row 1, Column 1
-                    lhs.m11 * rhs.m11 + lhs.m12 * rhs.m21 + lhs.m13 * rhs.m31,
-                    //Row 1, Column 2
-                    lhs.m11 * rhs.m12 + lhs.m12 * rhs.m22 + lhs.m13 * rhs.m32,
-                    //Row 1, Column 3
-                    lhs.m11 * rhs.m13 + lhs.m12 * rhs.m23 + lhs.m13 * rhs.m33,
-
-                    //Row 2, Column 1
-                    lhs.m21 * rhs.m11 + lhs.m22 * rhs.m21 + lhs.m23 * rhs.m31,
-                    //Row 2, Column 2
-                    lhs.m21 * rhs.m12 + lhs.m22 * rhs.m22 + lhs.m23 * rhs.m32,
-                    //Row 2, Column 3
-                    lhs.m21 * rhs.m13 + lhs.m22 * rhs.m23 + lhs.m23 * rhs.m33,
-
-                    //Row 3, Column 1
-                    lhs.m31 * rhs.m11 + lhs.m32 * rhs.m21 + lhs.m33 * rhs.m31,
-                    //Row 3, Column 2
-                    lhs.m31 * rhs.m12 + lhs.m32 * rhs.m22 + lhs.m33 * rhs.m32,
-                    //Row 3, Column 3
-                    lhs.m31 * rhs.m13 + lhs.m32 * rhs.m23 + lhs.m33 * rhs.m33
+            return new Vector3(
+                lhs.m11 * rhs.X + lhs.m12 * rhs.Y + lhs.m13 * rhs.Z,
+                lhs.m21 * rhs.X + lhs.m22 * rhs.Y + lhs.m23 * rhs.Z,
+                lhs.m31 * rhs.X + lhs.m32 * rhs.Y + lhs.m33 * rhs.Z
                 );
         }
     }

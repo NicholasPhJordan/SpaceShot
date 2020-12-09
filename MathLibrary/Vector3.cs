@@ -46,9 +46,7 @@ namespace MathLibrary
             get { return (float)Math.Sqrt(X * X + Y * Y + Z * Z); }
         }
 
-        /// <summary>
-        /// Returns the normalized version of a the vector passed in, but for 3 vectors now. (OOOOH, AAAAHHHH)
-        /// </summary>
+        // Returns the normalized version of a the vector passed in for 3 vectors
         public Vector3 Normalized
         {
             get { return Normalize(this); }
@@ -61,6 +59,8 @@ namespace MathLibrary
 
             return vector / vector.Magnitude;
         }
+
+        // Returns the dot product of the two vectors given
         public static float DotProduct(Vector3 lhs, Vector3 rhs)
         {
             return (lhs.X * rhs.X) + (lhs.Y * rhs.Y) + (lhs.Z * rhs.Z);
