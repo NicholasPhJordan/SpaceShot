@@ -8,7 +8,7 @@ namespace MathForGames
 {
     class Player : Actor
     {
-        private float _speed = 1;
+        private float _speed = 3;
         private static Sprite _sprite;
         private bool _canMove = true;
 
@@ -39,13 +39,27 @@ namespace MathForGames
             _canMove = false;
         }
 
+        public bool isShooting()
+        {
+            if (Game.GetKeyDown((int)KeyboardKey.KEY_SPACE) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public override void Update(float deltaTime)
         {
             //If the player can't move, don't ask for input.
             if (!_canMove)
                 return;
 
-            int xDirection = -Convert.ToInt32(null);
+            //input direction 
+            int xDirection = -Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_A))
+                + Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_D));
             int yDirection = -Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_W))
                 + Convert.ToInt32(Game.GetKeyDown((int)KeyboardKey.KEY_S));
 

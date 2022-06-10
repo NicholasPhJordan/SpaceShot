@@ -14,6 +14,8 @@ namespace MathForGames
         private static Scene[] _scenes;
         private static int _currentSceneIndex;
 
+        
+
         //Static function used to set game over without an instance of game.
         public static void SetGameOver(bool value)
         {
@@ -130,6 +132,19 @@ namespace MathForGames
         int Xr = rnd.Next(40, 51);  // creates a number between 40 and 50
         int Yr = rnd.Next(3, 23);  //random number between 3 and 22 
 
+        public static void spawnEnemy(Scene scene, float round)
+        {
+            
+            //adds (round * 5) of enemies that spawn in random locations
+            for (int i = 0; i < (round * 5); i++)
+            {
+                int Xr = rnd.Next(40, 61);  // creates a number between 40 and 50
+                int Yr = rnd.Next(3, 23);  //random number between 3 and 22
+                scene.AddActor(new Enemy(Xr, Yr));
+            }
+                        
+        }
+
         //Called when the game begins. Use this for initialization.
         public void Start()
         {
@@ -148,23 +163,8 @@ namespace MathForGames
             Player player = new Player(2f, 10.5f);
             scene1.AddActor(player);
 
-            //adds babies to scene
-            Baby baby = new Baby(2, .25f);
-            baby.SetScale(.5f, .5f);
-            player.AddChild(baby);
-            scene1.AddActor(baby);
-            Baby baby1 = new Baby(-2, .25f);
-            baby1.SetScale(.5f, .5f);
-            player.AddChild(baby1);
-            scene1.AddActor(baby1);
-
-            //adds a number of enemies that spawn in random locations
-            for (int i = 0; i < 5; i++)
-            {
-                int Xr = rnd.Next(40, 61);  // creates a number between 40 and 50
-                int Yr = rnd.Next(3, 23);  //random number between 3 and 22
-                scene1.AddActor(new Enemy(Xr, Yr));
-            }
+            //Spawns Enemies into the game 
+            //spawnEnemy(scene1, 1);
 
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;
@@ -181,6 +181,9 @@ namespace MathForGames
                 _scenes[_currentSceneIndex].Start();
 
             _scenes[_currentSceneIndex].Update(deltaTime);
+
+            spawnEnemy(GetCurrentScene(), 1);
+
         }
 
         //Used to display objects and other info on the screen.
